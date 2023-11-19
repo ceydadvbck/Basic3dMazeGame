@@ -1,14 +1,15 @@
 using UnityEngine;
 
 public class MouseLook : MonoBehaviour {
-#pragma warning disable 649
 
-    [SerializeField] float sensitivityX = 8f;
-    [SerializeField] float sensitivityY = 0.5f;
+
+    [SerializeField] float sensitivityX = 5f; //8
+    [SerializeField] float sensitivityY = 0.2f;  //0.5
+    
     float mouseX, mouseY;
 
     [SerializeField] Transform playerCamera;
-    [SerializeField] float xClamp = 85f;
+    [SerializeField] float xClamp = 100f; //85
     float xRotation = 0f;
 
     private void Start ()

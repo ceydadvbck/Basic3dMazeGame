@@ -10,7 +10,7 @@ public class Loosing : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
-            SceneManager.LoadScene("LooseScreen");
+            SceneManager.LoadScene("Level1");
         }
     }
 }

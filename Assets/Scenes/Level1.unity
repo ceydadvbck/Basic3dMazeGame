@@ -271,7 +271,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 0.7
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -470,7 +470,7 @@ Transform:
   m_GameObject: {fileID: 1626280501}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.47, y: -1.2353584, z: -0.8}
+  m_LocalPosition: {x: -4.47, y: -1.2353584, z: -0.73}
   m_LocalScale: {x: 5, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -588,7 +588,7 @@ PrefabInstance:
     - target: {fileID: 5026807025440012737, guid: 1f8b3d385cbcdef4d9e8ad6c2eb10143,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.05
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 5026807025440012737, guid: 1f8b3d385cbcdef4d9e8ad6c2eb10143,
         type: 3}
@@ -598,7 +598,7 @@ PrefabInstance:
     - target: {fileID: 5026807025440012737, guid: 1f8b3d385cbcdef4d9e8ad6c2eb10143,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.78
+      value: -9.73
       objectReference: {fileID: 0}
     - target: {fileID: 5026807025440012737, guid: 1f8b3d385cbcdef4d9e8ad6c2eb10143,
         type: 3}
@@ -731,6 +731,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 7460760108051692977, guid: be0938003ddc92842b7efd681380ea19,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 91d4c451e034aa24b9b33bf74f01ee5b, type: 2}
+    - target: {fileID: 7836976820945681364, guid: be0938003ddc92842b7efd681380ea19,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.89
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

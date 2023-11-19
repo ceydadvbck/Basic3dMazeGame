@@ -1,28 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLook : MonoBehaviour
-{
-    public Camera cam;
-    private float xRotation = 0f;
-    public float xSensitivity = 30f;
-    public float ySensitivity = 30f;
+public class MouseLook : MonoBehaviour {
+#pragma warning disable 649
 
-    // Start is called before the first frame update
-    public void ProcessLook(Vector2 input)
+    [SerializeField] float sensitivityX = 8f;
+    [SerializeField] float sensitivityY = 0.5f;
+    float mouseX, mouseY;
+
+    [SerializeField] Transform playerCamera;
+    [SerializeField] float xClamp = 85f;
+    float xRotation = 0f;
+
+    private void Start ()
     {
-        float mouseX = input.x;
-        float mouseY = input.y;
-        xRotation -= (mouseY * Time.deltaTime) * ySensitivity;
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
-        cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update ()
     {
-        
+        transform.Rotate(Vector3.up, mouseX * Time.deltaTime);
+
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -xClamp, xClamp);
+        Vector3 targetRotation = transform.eulerAngles;
+        targetRotation.x = xRotation;
+        playerCamera.eulerAngles = targetRotation;
     }
+
+    public void ReceiveInput (Vector2 mouseInput)
+    {
+        mouseX = mouseInput.x * sensitivityX;
+        mouseY = mouseInput.y * sensitivityY;
+    }
+
 }

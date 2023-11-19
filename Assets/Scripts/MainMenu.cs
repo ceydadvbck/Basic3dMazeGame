@@ -13,14 +13,5 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Level1");
     }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }

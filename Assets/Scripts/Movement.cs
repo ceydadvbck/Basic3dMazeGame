@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour {
     [SerializeField] float jumpHeight = 3.5f;
     bool jump;
 
-    [SerializeField] float gravity = -30f; // -9.81
+    [SerializeField] float gravity = -9.81f; 
     Vector3 verticalVelocity = Vector3.zero;
     [SerializeField] LayerMask groundMask;
     bool isGrounded;
@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour {
         Vector3 horizontalVelocity = (transform.right * horizontalInput.x + transform.forward * horizontalInput.y) * speed;
         controller.Move(horizontalVelocity * Time.deltaTime);
 
-        // Jump: v = sqrt(-2 * jumpHeight * gravity)
+        
         if (jump) {
             if (isGrounded) {
                 verticalVelocity.y = Mathf.Sqrt(-2f * jumpHeight * gravity);

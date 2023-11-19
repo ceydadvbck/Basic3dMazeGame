@@ -37,15 +37,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""3e01b6e3-11ef-436a-8a19-02b8dc34469c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""MouseX"",
                     ""type"": ""PassThrough"",
                     ""id"": ""e4e49e59-5a7d-4dd5-8df8-8a099542a38c"",
@@ -122,17 +113,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5bc204fc-c605-47ff-ac94-ccbc9743ba71"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""9ce5e74b-7ee5-42e4-9a80-e55109b36c90"",
                     ""path"": ""<Mouse>/delta/x"",
                     ""interactions"": """",
@@ -161,7 +141,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // GroundMovement
         m_GroundMovement = asset.FindActionMap("GroundMovement", throwIfNotFound: true);
         m_GroundMovement_HorizontalMovement = m_GroundMovement.FindAction("HorizontalMovement", throwIfNotFound: true);
-        m_GroundMovement_Jump = m_GroundMovement.FindAction("Jump", throwIfNotFound: true);
         m_GroundMovement_MouseX = m_GroundMovement.FindAction("MouseX", throwIfNotFound: true);
         m_GroundMovement_MouseY = m_GroundMovement.FindAction("MouseY", throwIfNotFound: true);
     }
@@ -226,7 +205,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_GroundMovement;
     private List<IGroundMovementActions> m_GroundMovementActionsCallbackInterfaces = new List<IGroundMovementActions>();
     private readonly InputAction m_GroundMovement_HorizontalMovement;
-    private readonly InputAction m_GroundMovement_Jump;
     private readonly InputAction m_GroundMovement_MouseX;
     private readonly InputAction m_GroundMovement_MouseY;
     public struct GroundMovementActions
@@ -234,7 +212,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         private @PlayerControls m_Wrapper;
         public GroundMovementActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @HorizontalMovement => m_Wrapper.m_GroundMovement_HorizontalMovement;
-        public InputAction @Jump => m_Wrapper.m_GroundMovement_Jump;
         public InputAction @MouseX => m_Wrapper.m_GroundMovement_MouseX;
         public InputAction @MouseY => m_Wrapper.m_GroundMovement_MouseY;
         public InputActionMap Get() { return m_Wrapper.m_GroundMovement; }
@@ -249,9 +226,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @HorizontalMovement.started += instance.OnHorizontalMovement;
             @HorizontalMovement.performed += instance.OnHorizontalMovement;
             @HorizontalMovement.canceled += instance.OnHorizontalMovement;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
             @MouseX.started += instance.OnMouseX;
             @MouseX.performed += instance.OnMouseX;
             @MouseX.canceled += instance.OnMouseX;
@@ -265,9 +239,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @HorizontalMovement.started -= instance.OnHorizontalMovement;
             @HorizontalMovement.performed -= instance.OnHorizontalMovement;
             @HorizontalMovement.canceled -= instance.OnHorizontalMovement;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
             @MouseX.started -= instance.OnMouseX;
             @MouseX.performed -= instance.OnMouseX;
             @MouseX.canceled -= instance.OnMouseX;
@@ -294,7 +265,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IGroundMovementActions
     {
         void OnHorizontalMovement(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
         void OnMouseX(InputAction.CallbackContext context);
         void OnMouseY(InputAction.CallbackContext context);
     }
